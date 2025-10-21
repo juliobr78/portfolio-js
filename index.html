@@ -1,61 +1,363 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Julio Cesar Vieira - Portfólio</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrega III – Interatividade e Funcionalidades</title>
+  <link rel="stylesheet" href="variables.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
+  <!-- HEADER COM MENU HAMBURGUER -->
   <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <!-- SVG logo inline -->
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="22" height="22" rx="4" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M6 16 L10 8 L14 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Meu Portfólio</div>
+        
+        <!-- Menu Desktop -->
+        <nav class="nav-desktop">
+          <ul class="nav-list">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li class="dropdown">
+              <a href="#projetos" class="nav-link">Projetos</a>
+              <ul class="dropdown-menu">
+                <li><a href="#web">Web Design</a></li>
+                <li><a href="#mobile">Mobile Apps</a></li>
+                <li><a href="#design">Design</a></li>
+              </ul>
+            </li>
+            <li><a href="#sobre" class="nav-link">Sobre</a></li>
+            <li><a href="#contato" class="nav-link">Contato</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botão Hamburguer Mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <nav class="nav-mobile" id="navMobile">
+      <ul class="nav-mobile-list">
+        <li><a href="#home" class="nav-mobile-link">Home</a></li>
+        <li><a href="#projetos" class="nav-mobile-link">Projetos</a></li>
+        <li><a href="#sobre" class="nav-mobile-link">Sobre</a></li>
+        <li><a href="#contato" class="nav-mobile-link">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="container">
+      <span class="badge badge-primary">Entrega III</span>
+      <h1 class="hero-title">Interatividade e Funcionalidades</h1>
+      <p class="hero-subtitle">Aplicação web dinâmica com JavaScript avançado, SPA e validação de formulários.</p>
+      <div class="hero-actions">
+        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+        <a href="#sobre" class="btn btn-outline">Sobre Mim</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS SECTION -->
+  <section id="projetos" class="projects">
+    <div class="container">
+      <h2 class="section-title">Meus Projetos</h2>
+      <p class="section-subtitle">Confira alguns dos meus trabalhos mais recentes</p>
+      
+      <div class="projects-grid">
+        <!-- PROJETO 1 -->
+        <div class="card" data-category="web">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop" alt="Projeto 1">
+            <span class="badge badge-success card-badge">Novo</span>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-primary">HTML</span>
+              <span class="tag tag-secondary">CSS</span>
+              <span class="tag tag-info">JavaScript</span>
+            </div>
+            <h3 class="card-title">Landing Page Moderna</h3>
+            <p class="card-text">Landing page responsiva com animações suaves e design contemporâneo.</p>
+            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 1')">Ver Detalhes</a>
+          </div>
         </div>
-        <div class="brand-text">
-          <strong>Julio Cesar Vieira</strong>
-          <small>Desenvolvedor em formação</small>
+
+        <!-- PROJETO 2 -->
+        <div class="card" data-category="web">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Projeto 2">
+            <span class="badge badge-warning card-badge">Destaque</span>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-primary">React</span>
+              <span class="tag tag-info">Node.js</span>
+            </div>
+            <h3 class="card-title">Dashboard Analytics</h3>
+            <p class="card-text">Dashboard interativo com gráficos e visualização de dados em tempo real.</p>
+            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 2')">Ver Detalhes</a>
+          </div>
+        </div>
+
+        <!-- PROJETO 3 -->
+        <div class="card" data-category="web">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop" alt="Projeto 3">
+            <span class="badge badge-info card-badge">Popular</span>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-success">Vue.js</span>
+              <span class="tag tag-secondary">API</span>
+            </div>
+            <h3 class="card-title">E-commerce Platform</h3>
+            <p class="card-text">Plataforma completa de e-commerce com carrinho e sistema de pagamento.</p>
+            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 3')">Ver Detalhes</a>
+          </div>
+        </div>
+
+        <!-- PROJETO 4 -->
+        <div class="card" data-category="mobile">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Projeto 4">
+            <span class="badge badge-success card-badge">Novo</span>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-primary">React Native</span>
+              <span class="tag tag-info">Firebase</span>
+            </div>
+            <h3 class="card-title">App Fitness Tracker</h3>
+            <p class="card-text">Aplicativo mobile para acompanhamento de treinos e nutrição.</p>
+            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 4')">Ver Detalhes</a>
+          </div>
+        </div>
+
+        <!-- PROJETO 5 -->
+        <div class="card" data-category="design">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Projeto 5">
+            <span class="badge badge-warning card-badge">Em Progresso</span>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-primary">Figma</span>
+              <span class="tag tag-secondary">Design System</span>
+            </div>
+            <h3 class="card-title">Sistema de Design</h3>
+            <p class="card-text">Design system completo com componentes reutilizáveis e documentação.</p>
+            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 5')">Ver Detalhes</a>
+          </div>
+        </div>
+
+        <!-- PROJETO 6 -->
+        <div class="card" data-category="web">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" alt="Projeto 6">
+            <span class="badge badge-warning card-badge">Destaque</span>
+          </div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag tag-primary">Three.js</span>
+              <span class="tag tag-info">WebGL</span>
+            </div>
+            <h3 class="card-title">Portfolio 3D Interativo</h3>
+            <p class="card-text">Portfolio com animações 3D, efeitos parallax e interações imersivas.</p>
+            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 6')">Ver Detalhes</a>
+          </div>
         </div>
       </div>
 
-      <nav class="nav">
-        <a class="nav-link" href="#home">Home</a>
-        <a class="nav-link" href="#projetos">Projetos</a>
-        <a class="nav-link" href="#sobre">Sobre</a>
-        <a class="nav-link" href="#contato">Contato</a>
-        <button id="hamburger" aria-label="Abrir menu">☰</button>
-      </nav>
+      <div class="text-center" style="margin-top: 40px;">
+        <button class="btn btn-outline" onclick="alert('Mais projetos em breve!')">Carregar Mais Projetos</button>
+      </div>
     </div>
+  </section>
 
-    <div id="navMobile" class="nav-mobile">
-      <a class="nav-mobile-link" href="#home">Home</a>
-      <a class="nav-mobile-link" href="#projetos">Projetos</a>
-      <a class="nav-mobile-link" href="#sobre">Sobre</a>
-      <a class="nav-mobile-link" href="#contato">Contato</a>
+  <!-- SOBRE SECTION -->
+  <section id="sobre" class="about">
+    <div class="container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <p class="about-text">
+        Sou <strong>Julio Cesar Vieira Magalhães</strong>, estudante de Análise e Desenvolvimento de Sistemas. 
+        Apaixonado por criar interfaces modernas e funcionais, este site foi desenvolvido com HTML5, CSS3 e 
+        JavaScript puro, demonstrando conceitos avançados de programação web.
+      </p>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>HTML5</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 90%"></div>
+          </div>
+          <p style="text-align: center; margin-top: 8px; font-weight: bold; color: #4f46e5;">90%</p>
+        </div>
+        <div class="skill-card">
+          <h4>CSS3</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 85%"></div>
+          </div>
+          <p style="text-align: center; margin-top: 8px; font-weight: bold; color: #4f46e5;">85%</p>
+        </div>
+        <div class="skill-card">
+          <h4>JavaScript</h4>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 80%"></div>
+          </div>
+          <p style="text-align: center; margin-top: 8px; font-weight: bold; color: #4f46e5;">80%</p>
+        </div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main class="container">
-    <!-- Conteúdo será injetado pelo Templates.js -->
-  </main>
+  <!-- CONTATO SECTION -->
+  <section id="contato" class="contact">
+    <div class="container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <p class="section-subtitle">Tem algum projeto em mente? Vamos conversar!</p>
+      
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome Completo *</label>
+            <input type="text" id="nome" name="nome" required class="form-input" 
+                   placeholder="Digite seu nome completo">
+            <span class="error-message"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required class="form-input"
+                   placeholder="seu@email.com">
+            <span class="error-message"></span>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" class="form-input"
+                   placeholder="(00) 00000-0000">
+            <span class="error-message"></span>
+          </div>
+          
+          <div class="form-group">
+            <label for="assunto">Assunto *</label>
+            <select id="assunto" name="assunto" required class="form-select">
+              <option value="">Selecione um assunto</option>
+              <option value="projeto">Novo Projeto</option>
+              <option value="duvida">Dúvida</option>
+              <option value="parceria">Parceria</option>
+              <option value="outro">Outro</option>
+            </select>
+            <span class="error-message"></span>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label for="mensagem">Mensagem *</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required class="form-textarea"
+                    placeholder="Digite sua mensagem aqui..."></textarea>
+          <span class="error-message"></span>
+          <small style="color: #6b7280; font-size: 0.875rem;">Mínimo de 10 caracteres</small>
+        </div>
+
+        <div class="form-group">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="termos" name="termos" required>
+            <span>Aceito os termos e condições *</span>
+          </label>
+          <span class="error-message"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-large">Enviar Mensagem</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Julio Cesar Vieira — Portfólio</small>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Meu Portfólio</h4>
+          <p>Desenvolvendo soluções web modernas e responsivas com as melhores tecnologias.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Links Rápidos</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Redes Sociais</h4>
+          <div class="social-links">
+            <a href="https://github.com/juliobr78" target="_blank" class="social-link">GitHub</a>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">Twitter</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2025 – Julio Cesar Vieira Magalhães | Análise e Desenvolvimento de Sistemas</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 id="modalTitle">Mensagem Enviada!</h3>
+      <p id="modalMessage">Obrigado pelo contato. Responderei em breve!</p>
+      <button class="btn btn-primary" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- ALERT -->
+  <div class="alert alert-info" id="alert" style="display: none;">
+    <span class="alert-icon">ℹ️</span>
+    <span class="alert-message">Esta é uma demonstração de alert!</span>
+    <button class="alert-close" onclick="closeAlert()">&times;</button>
+  </div>
+
+  <!-- SCRIPTS JAVASCRIPT -->
   <script src="js/app.js"></script>
-  <script src="js/Templates.js"></script>
-  <script src="js/FormValidator.js"></script>
-  <script src="js/Modal.js"></script>
-  <script src="js/Alert.js"></script>
-  <script src="js/ProjectsManager.js"></script>
+  <script src="js/templates.js"></script>
+  <script src="js/form-validator.js"></script>
+  <script src="js/components.js"></script>
+  
+  <script>
+    // Funções auxiliares para os botões
+    function showProjectDetails(projectName) {
+      document.getElementById('modalTitle').textContent = projectName;
+      document.getElementById('modalMessage').textContent = 'Detalhes completos do projeto em breve!';
+      document.getElementById('modal').classList.add('active');
+    }
+    
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+    
+    function closeAlert() {
+      document.getElementById('alert').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
