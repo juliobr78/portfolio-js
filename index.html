@@ -3,38 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrega III – Interatividade e Funcionalidades</title>
+  <title>Julio Cesar Vieira Magalhães - Portfólio</title>
   <link rel="stylesheet" href="variables.css">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="components.css">
   <link rel="stylesheet" href="layout.css">
   <link rel="stylesheet" href="responsive.css">
+  <style>
+    /* Correções para garantir que tudo funcione */
+    .card-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 10px 24px;
+      border: 2px solid #4f46e5;
+      background: white;
+      color: #4f46e5;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Estilos para erro de formulário */
+    .error-message {
+      color: #ef4444;
+      font-size: 0.875rem;
+      margin-top: 4px;
+      display: none;
+    }
+    
+    .error-message.show {
+      display: block;
+    }
+    
+    .form-input.error,
+    .form-textarea.error,
+    .form-select.error {
+      border-color: #ef4444;
+    }
+    
+    /* Animação shake */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+    }
+    
+    .shake {
+      animation: shake 0.3s;
+    }
+  </style>
 </head>
 <body>
-  <!-- HEADER COM MENU HAMBURGUER -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container">
       <div class="header-content">
-        <div class="logo">Meu Portfólio</div>
+        <div class="logo">Julio Cesar Vieira</div>
         
-        <!-- Menu Desktop -->
         <nav class="nav-desktop">
           <ul class="nav-list">
             <li><a href="#home" class="nav-link">Home</a></li>
-            <li class="dropdown">
-              <a href="#projetos" class="nav-link">Projetos</a>
-              <ul class="dropdown-menu">
-                <li><a href="#web">Web Design</a></li>
-                <li><a href="#mobile">Mobile Apps</a></li>
-                <li><a href="#design">Design</a></li>
-              </ul>
-            </li>
+            <li><a href="#projetos" class="nav-link">Projetos</a></li>
             <li><a href="#sobre" class="nav-link">Sobre</a></li>
             <li><a href="#contato" class="nav-link">Contato</a></li>
           </ul>
         </nav>
 
-        <!-- Botão Hamburguer Mobile -->
         <button class="hamburger" id="hamburger" aria-label="Menu">
           <span></span>
           <span></span>
@@ -43,7 +98,6 @@
       </div>
     </div>
 
-    <!-- Menu Mobile -->
     <nav class="nav-mobile" id="navMobile">
       <ul class="nav-mobile-list">
         <li><a href="#home" class="nav-mobile-link">Home</a></li>
@@ -54,12 +108,12 @@
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="container">
-      <span class="badge badge-primary">Entrega III</span>
+      <span class="badge badge-primary">✨ Entrega III - JavaScript Avançado</span>
       <h1 class="hero-title">Interatividade e Funcionalidades</h1>
-      <p class="hero-subtitle">Aplicação web dinâmica com JavaScript avançado, SPA e validação de formulários.</p>
+      <p class="hero-subtitle">Aplicação web dinâmica com validação de formulários, SPA e manipulação do DOM.</p>
       <div class="hero-actions">
         <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
         <a href="#sobre" class="btn btn-outline">Sobre Mim</a>
@@ -67,35 +121,61 @@
     </div>
   </section>
 
-  <!-- PROJETOS SECTION -->
+  <!-- PROJETOS -->
   <section id="projetos" class="projects">
     <div class="container">
       <h2 class="section-title">Meus Projetos</h2>
       <p class="section-subtitle">Confira alguns dos meus trabalhos mais recentes</p>
       
-      <div class="projects-grid">
+      <!-- Filtros -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterProjects('all')">Todos</button>
+        <button class="filter-btn" onclick="filterProjects('web')">Web</button>
+        <button class="filter-btn" onclick="filterProjects('mobile')">Mobile</button>
+        <button class="filter-btn" onclick="filterProjects('design')">Design</button>
+      </div>
+      
+      <div class="projects-grid" id="projectsGrid">
         <!-- PROJETO 1 -->
         <div class="card" data-category="web">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop" alt="Projeto 1">
+            <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="200" fill="url(#grad1)"/>
+              <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="48" font-weight="bold">💻</text>
+            </svg>
             <span class="badge badge-success card-badge">Novo</span>
           </div>
           <div class="card-body">
             <div class="card-tags">
               <span class="tag tag-primary">HTML</span>
               <span class="tag tag-secondary">CSS</span>
-              <span class="tag tag-info">JavaScript</span>
+              <span class="tag tag-info">JS</span>
             </div>
             <h3 class="card-title">Landing Page Moderna</h3>
             <p class="card-text">Landing page responsiva com animações suaves e design contemporâneo.</p>
-            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 1')">Ver Detalhes</a>
+            <button class="btn btn-small btn-primary" onclick="showProject('Landing Page Moderna', 'Projeto desenvolvido com HTML5, CSS3 e JavaScript puro.')">Ver Detalhes</button>
           </div>
         </div>
 
         <!-- PROJETO 2 -->
         <div class="card" data-category="web">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Projeto 2">
+            <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="200" fill="url(#grad2)"/>
+              <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="48" font-weight="bold">📊</text>
+            </svg>
             <span class="badge badge-warning card-badge">Destaque</span>
           </div>
           <div class="card-body">
@@ -105,14 +185,23 @@
             </div>
             <h3 class="card-title">Dashboard Analytics</h3>
             <p class="card-text">Dashboard interativo com gráficos e visualização de dados em tempo real.</p>
-            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 2')">Ver Detalhes</a>
+            <button class="btn btn-small btn-primary" onclick="showProject('Dashboard Analytics', 'Sistema de analytics completo com React e Chart.js.')">Ver Detalhes</button>
           </div>
         </div>
 
         <!-- PROJETO 3 -->
         <div class="card" data-category="web">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop" alt="Projeto 3">
+            <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="200" fill="url(#grad3)"/>
+              <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="48" font-weight="bold">🛒</text>
+            </svg>
             <span class="badge badge-info card-badge">Popular</span>
           </div>
           <div class="card-body">
@@ -122,14 +211,23 @@
             </div>
             <h3 class="card-title">E-commerce Platform</h3>
             <p class="card-text">Plataforma completa de e-commerce com carrinho e sistema de pagamento.</p>
-            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 3')">Ver Detalhes</a>
+            <button class="btn btn-small btn-primary" onclick="showProject('E-commerce', 'Loja virtual completa com integração de pagamento.')">Ver Detalhes</button>
           </div>
         </div>
 
         <!-- PROJETO 4 -->
         <div class="card" data-category="mobile">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Projeto 4">
+            <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="200" fill="url(#grad4)"/>
+              <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="48" font-weight="bold">💪</text>
+            </svg>
             <span class="badge badge-success card-badge">Novo</span>
           </div>
           <div class="card-body">
@@ -139,14 +237,23 @@
             </div>
             <h3 class="card-title">App Fitness Tracker</h3>
             <p class="card-text">Aplicativo mobile para acompanhamento de treinos e nutrição.</p>
-            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 4')">Ver Detalhes</a>
+            <button class="btn btn-small btn-primary" onclick="showProject('Fitness App', 'App de treinos com sincronização em nuvem.')">Ver Detalhes</button>
           </div>
         </div>
 
         <!-- PROJETO 5 -->
         <div class="card" data-category="design">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Projeto 5">
+            <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="200" fill="url(#grad5)"/>
+              <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="48" font-weight="bold">🎨</text>
+            </svg>
             <span class="badge badge-warning card-badge">Em Progresso</span>
           </div>
           <div class="card-body">
@@ -156,14 +263,23 @@
             </div>
             <h3 class="card-title">Sistema de Design</h3>
             <p class="card-text">Design system completo com componentes reutilizáveis e documentação.</p>
-            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 5')">Ver Detalhes</a>
+            <button class="btn btn-small btn-primary" onclick="showProject('Design System', 'Sistema de design modular e escalável.')">Ver Detalhes</button>
           </div>
         </div>
 
         <!-- PROJETO 6 -->
         <div class="card" data-category="web">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" alt="Projeto 6">
+            <svg width="100%" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#30cfd0;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#330867;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="200" fill="url(#grad6)"/>
+              <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="48" font-weight="bold">🚀</text>
+            </svg>
             <span class="badge badge-warning card-badge">Destaque</span>
           </div>
           <div class="card-body">
@@ -173,25 +289,20 @@
             </div>
             <h3 class="card-title">Portfolio 3D Interativo</h3>
             <p class="card-text">Portfolio com animações 3D, efeitos parallax e interações imersivas.</p>
-            <a href="#" class="btn btn-small btn-primary" onclick="showProjectDetails('Projeto 6')">Ver Detalhes</a>
+            <button class="btn btn-small btn-primary" onclick="showProject('Portfolio 3D', 'Experiência imersiva com Three.js e WebGL.')">Ver Detalhes</button>
           </div>
         </div>
-      </div>
-
-      <div class="text-center" style="margin-top: 40px;">
-        <button class="btn btn-outline" onclick="alert('Mais projetos em breve!')">Carregar Mais Projetos</button>
       </div>
     </div>
   </section>
 
-  <!-- SOBRE SECTION -->
+  <!-- SOBRE -->
   <section id="sobre" class="about">
     <div class="container">
       <h2 class="section-title">Sobre Mim</h2>
       <p class="about-text">
         Sou <strong>Julio Cesar Vieira Magalhães</strong>, estudante de Análise e Desenvolvimento de Sistemas. 
-        Apaixonado por criar interfaces modernas e funcionais, este site foi desenvolvido com HTML5, CSS3 e 
-        JavaScript puro, demonstrando conceitos avançados de programação web.
+        Apaixonado por tecnologia e inovação, desenvolvo soluções web modernas utilizando as melhores práticas de programação.
       </p>
       
       <div class="skills-grid">
@@ -220,26 +331,26 @@
     </div>
   </section>
 
-  <!-- CONTATO SECTION -->
+  <!-- CONTATO -->
   <section id="contato" class="contact">
     <div class="container">
       <h2 class="section-title">Entre em Contato</h2>
       <p class="section-subtitle">Tem algum projeto em mente? Vamos conversar!</p>
       
-      <form class="contact-form" id="contactForm" novalidate>
+      <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="nome">Nome Completo *</label>
             <input type="text" id="nome" name="nome" required class="form-input" 
                    placeholder="Digite seu nome completo">
-            <span class="error-message"></span>
+            <span class="error-message" id="nomeError"></span>
           </div>
           
           <div class="form-group">
             <label for="email">E-mail *</label>
             <input type="email" id="email" name="email" required class="form-input"
                    placeholder="seu@email.com">
-            <span class="error-message"></span>
+            <span class="error-message" id="emailError"></span>
           </div>
         </div>
         
@@ -248,7 +359,7 @@
             <label for="telefone">Telefone</label>
             <input type="tel" id="telefone" name="telefone" class="form-input"
                    placeholder="(00) 00000-0000">
-            <span class="error-message"></span>
+            <span class="error-message" id="telefoneError"></span>
           </div>
           
           <div class="form-group">
@@ -260,7 +371,7 @@
               <option value="parceria">Parceria</option>
               <option value="outro">Outro</option>
             </select>
-            <span class="error-message"></span>
+            <span class="error-message" id="assuntoError"></span>
           </div>
         </div>
 
@@ -268,7 +379,7 @@
           <label for="mensagem">Mensagem *</label>
           <textarea id="mensagem" name="mensagem" rows="5" required class="form-textarea"
                     placeholder="Digite sua mensagem aqui..."></textarea>
-          <span class="error-message"></span>
+          <span class="error-message" id="mensagemError"></span>
           <small style="color: #6b7280; font-size: 0.875rem;">Mínimo de 10 caracteres</small>
         </div>
 
@@ -277,10 +388,10 @@
             <input type="checkbox" id="termos" name="termos" required>
             <span>Aceito os termos e condições *</span>
           </label>
-          <span class="error-message"></span>
+          <span class="error-message" id="termosError"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-large">Enviar Mensagem</button>
+        <button type="submit" class="btn btn-primary btn-large" id="submitBtn">Enviar Mensagem</button>
       </form>
     </div>
   </section>
@@ -291,7 +402,7 @@
       <div class="footer-content">
         <div class="footer-section">
           <h4>Meu Portfólio</h4>
-          <p>Desenvolvendo soluções web modernas e responsivas com as melhores tecnologias.</p>
+          <p>Desenvolvendo soluções web modernas e responsivas.</p>
         </div>
         
         <div class="footer-section">
@@ -307,7 +418,7 @@
         <div class="footer-section">
           <h4>Redes Sociais</h4>
           <div class="social-links">
-            <a href="https://github.com/juliobr78" target="_blank" class="social-link">GitHub</a>
+            <a href="https://github.com/juliobr78" class="social-link" target="_blank">GitHub</a>
             <a href="#" class="social-link">LinkedIn</a>
             <a href="#" class="social-link">Twitter</a>
           </div>
@@ -324,40 +435,167 @@
   <div class="modal" id="modal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal()">&times;</button>
-      <h3 id="modalTitle">Mensagem Enviada!</h3>
-      <p id="modalMessage">Obrigado pelo contato. Responderei em breve!</p>
+      <h3 id="modalTitle"></h3>
+      <p id="modalMessage"></p>
       <button class="btn btn-primary" onclick="closeModal()">Fechar</button>
     </div>
   </div>
 
-  <!-- ALERT -->
-  <div class="alert alert-info" id="alert" style="display: none;">
-    <span class="alert-icon">ℹ️</span>
-    <span class="alert-message">Esta é uma demonstração de alert!</span>
-    <button class="alert-close" onclick="closeAlert()">&times;</button>
-  </div>
-
-  <!-- SCRIPTS JAVASCRIPT -->
-  <script src="js/app.js"></script>
-  <script src="js/templates.js"></script>
-  <script src="js/form-validator.js"></script>
-  <script src="js/components.js"></script>
-  
+  <!-- SCRIPTS -->
   <script>
-    // Funções auxiliares para os botões
-    function showProjectDetails(projectName) {
-      document.getElementById('modalTitle').textContent = projectName;
-      document.getElementById('modalMessage').textContent = 'Detalhes completos do projeto em breve!';
+    // ========== MENU HAMBURGUER ==========
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMobile.classList.toggle('active');
+    });
+    
+    // Fechar menu ao clicar em link
+    document.querySelectorAll('.nav-mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMobile.classList.remove('active');
+      });
+    });
+    
+    // ========== SMOOTH SCROLL ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    // ========== FILTRAR PROJETOS ==========
+    function filterProjects(category) {
+      const cards = document.querySelectorAll('.card');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      // Atualizar botões
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Filtrar cards
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'all' || cardCategory === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    
+    // ========== MOSTRAR PROJETO ==========
+    function showProject(title, description) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalMessage').textContent = description;
       document.getElementById('modal').classList.add('active');
     }
     
+    // ========== FECHAR MODAL ==========
     function closeModal() {
       document.getElementById('modal').classList.remove('active');
     }
     
-    function closeAlert() {
-      document.getElementById('alert').style.display = 'none';
+    // ========== VALIDAÇÃO DE FORMULÁRIO ==========
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      // Limpar erros anteriores
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.textContent = '';
+        el.classList.remove('show');
+      });
+      document.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(el => {
+        el.classList.remove('error');
+      });
+      
+      let isValid = true;
+      
+      // Validar nome
+      const nome = document.getElementById('nome');
+      if (!nome.value.trim() || nome.value.trim().length < 3) {
+        showError('nomeError', 'Nome deve ter pelo menos 3 caracteres', nome);
+        isValid = false;
+      }
+      
+      // Validar email
+      const email = document.getElementById('email');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailRegex.test(email.value)) {
+        showError('emailError', 'Digite um e-mail válido', email);
+        isValid = false;
+      }
+      
+      // Validar assunto
+      const assunto = document.getElementById('assunto');
+      if (!assunto.value) {
+        showError('assuntoError', 'Selecione um assunto', assunto);
+        isValid = false;
+      }
+      
+      // Validar mensagem
+      const mensagem = document.getElementById('mensagem');
+      if (!mensagem.value.trim() || mensagem.value.trim().length < 10) {
+        showError('mensagemError', 'Mensagem deve ter pelo menos 10 caracteres', mensagem);
+        isValid = false;
+      }
+      
+      // Validar termos
+      const termos = document.getElementById('termos');
+      if (!termos.checked) {
+        showError('termosError', 'Você precisa aceitar os termos', termos);
+        isValid = false;
+      }
+      
+      if (isValid) {
+        // Salvar dados
+        const formData = {
+          nome: nome.value,
+          email: email.value,
+          telefone: document.getElementById('telefone').value,
+          assunto: assunto.value,
+          mensagem: mensagem.value,
+          data: new Date().toLocaleString('pt-BR')
+        };
+        
+        // Salvar no localStorage
+        const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+        submissions.push(formData);
+        localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+        
+        // Mostrar sucesso
+        document.getElementById('modalTitle').textContent = '✅ Mensagem Enviada!';
+        document.getElementById('modalMessage').textContent = 'Obrigado pelo contato, ' + nome.value + '! Responderemos em breve.';
+        document.getElementById('modal').classList.add('active');
+        
+        // Limpar formulário
+        document.getElementById('contactForm').reset();
+      }
+    }
+    
+    function showError(errorId, message, field) {
+      const errorEl = document.getElementById(errorId);
+      errorEl.textContent = message;
+      errorEl.classList.add('show');
+      field.classList.add('error', 'shake');
+      
+      setTimeout(() => {
+        field.classList.remove('shake');
+      }, 300);
     }
   </script>
+  
+  <!-- Scripts JavaScript externos -->
+  <script src="js/app.js"></script>
+  <script src="js/templates.js"></script>
+  <script src="js/form-validator.js"></script>
+  <script src="js/components.js"></script>
 </body>
 </html>
