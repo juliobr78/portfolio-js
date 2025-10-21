@@ -1,0 +1,8 @@
+/* style.css - Exemplo básico */
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+header { background:#222; color:#fff; padding:10px 20px; }
+nav a { color:#fff; margin-right:12px; text-decoration:none; }
+main { padding:20px; }
+.nav-mobile { display:none; }
+button#hamburger { background:transparent; color:#fff; border:0; font-size:20px; }
+.active { font-weight:bold; }
